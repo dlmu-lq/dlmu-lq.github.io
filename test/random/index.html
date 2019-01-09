@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <title>RANDOM</title>
+</head>
+<style type="text/css">
+    #random:hover{
+        cursor: pointer;
+    }
+</style>
+<body style="height: 100%;">
+    <div id="random"
+         style="width: 100%;height: 100%; font-size: 10em;
+         text-align: center;line-height: 100%;display: flex;justify-content: center;align-items: center">
+
+    </div>
+</body>
+<script>
+    window.onload=function () {
+        function setRandom() {
+            var random = Math.ceil(Math.random() * 10);
+            el.style.color = "rgba("+ Math.random()*255 +","+ Math.random()*255 +","+ Math.random()*255 +",1)";
+            el.innerText = random;
+        }
+        var el = document.getElementById("random");
+        setRandom();
+        el.addEventListener("click",function () {
+            setRandom();
+        })
+    }
+</script>
+</html>
