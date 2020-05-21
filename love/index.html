@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Title</title>
-    <script src="./data.js"></script>
+    <script src="./data.js?a=1"></script>
     <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts-en.common.js"></script>
     <style type="text/css">
         html, body{
             width: 100%;
             height: 100%;
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <img style="position: absolute;width: 100%;height: 100%" src="http://pic1.win4000.com/pic/0/2d/1bfac1ee49.jpg"/>
-    <div id="chart" style="width:100%;height: 40%;position: absolute;top:16%;left: 0;"></div>
+    <div style="width:100%;height: 100%;position: absolute;background: rgba(0, 0, 0, 0.3)">
+        <div id="chart" style="width:100%;height: 70%;position: absolute;top:16%;left: 0;"></div>
+    </div>
     <script>
         window.onload = ()=>{
             let name, count = 0;
-            // do{
-            //     name = window.prompt((count > 0 ? "再试一次，" : "") + "世界上最美丽的姑娘是谁呢？");
-            //     count++;
-            // }while(md5(name) != "934e2fac0753aca9fdd622cd6dc3c5c2");
-
+            do{
+                name = window.prompt((count > 0 ? "再试一次，" : "") + "世界上最美丽的姑娘是谁呢？");
+                count++;
+            }while(md5(name) != "934e2fac0753aca9fdd622cd6dc3c5c2");
             var myChart = echarts.init(document.getElementById('chart'));
             let xData = [], data1 = [], data2 = [], data3 = [];
             datas.forEach(item=>{
@@ -38,20 +41,72 @@
                 },
                 tooltip: {},
                 legend: {
+                    top: -3,
+                    data: [
+                        {
+                            name: "低压",
+                            textStyle: {
+                                color: "#38e638"
+                            }
+                        },
+                        {
+                            name: "高压",
+                            textStyle: {
+                                color: "#38e638"
+                            }
+                        },
+                        {
+                            name: "心跳次数/分钟",
+                            textStyle: {
+                                color: "#f353a5"
+                            }
+                        },
+                    ]
                 },
                 xAxis: {
-                    data: xData
+                    // name: "时间",
+                    data: xData,
+                    axisLabel: {
+                        color: "#38e638"
+                    },
+                    axisLine:{
+                        lineStyle: {
+                            color: "#38e638"
+                        }
+                    }
                 },
                 yAxis: [
                     {
                         name: "血压",
                         min: 50,
                         max: 140,
+                        axisLabel: {
+                            color: "#38e638"
+                        },
+                        nameTextStyle: {
+                            color: "#38e638"
+                        },
+                        axisLine:{
+                            lineStyle: {
+                                color: "#38e638"
+                            }
+                        }
                     },
                     {
                         name: "心跳次数/分钟",
                         min: 60,
                         max: 100,
+                        axisLabel: {
+                            color: "#f353a5"
+                        },
+                        nameTextStyle: {
+                            color: "#f353a5"
+                        },
+                        axisLine:{
+                            lineStyle: {
+                                color: "#f353a5"
+                            }
+                        }
                     }
                 ],
                 series: [
@@ -60,20 +115,33 @@
                         type: 'line',
                         data: data1,
                         yAxisIndex: 0,
+                        lineStyle:{
+                            color: "#38e638"
+                        }
                     },
                     {
                         name: '高压',
                         type: 'line',
                         data: data2,
                         yAxisIndex: 0,
+                        lineStyle:{
+                            color: "#38e638"
+                        }
                     },
                     {
-                        name: '心跳',
+                        name: '心跳次数/分钟',
                         type: 'line',
                         data: data3,
                         yAxisIndex: 1,
+                        lineStyle:{
+                            color: "#f353a5"
+                        },
+                        itemStyle: {
+                            color: "#f353a5"
+                        }
                     },
-                ]
+                ],
+                color: ["#38e638", "#38e638"]
             };
             myChart.setOption(option);
         }
