@@ -14,7 +14,8 @@
     </style>
 </head>
 <body>
-    <div id="chart" style="with:100%;height: 100%;"></div>
+    <img style="position: absolute;width: 100%;height: 100%" src="http://pic1.win4000.com/pic/0/2d/1bfac1ee49.jpg"/>
+    <div id="chart" style="width:100%;height: 40%;position: absolute;top:16%;left: 0;"></div>
     <script>
         window.onload = ()=>{
             let name, count = 0;
@@ -43,10 +44,14 @@
                 },
                 yAxis: [
                     {
-                        name: "血压"
+                        name: "血压",
+                        min: 50,
+                        max: 140,
                     },
                     {
-                        name: "心跳次数/分钟"
+                        name: "心跳次数/分钟",
+                        min: 60,
+                        max: 100,
                     }
                 ],
                 series: [
