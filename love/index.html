@@ -23,10 +23,10 @@
     <script>
         window.onload = ()=>{
             let name, count = 0;
-            do{
-                name = window.prompt((count > 0 ? "再试一次，" : "") + "世界上最美丽的姑娘是谁呢？");
-                count++;
-            }while(md5(name) != "934e2fac0753aca9fdd622cd6dc3c5c2");
+            // do{
+            //     name = window.prompt((count > 0 ? "再试一次，" : "") + "世界上最美丽的姑娘是谁呢？");
+            //     count++;
+            // }while(md5(name) != "934e2fac0753aca9fdd622cd6dc3c5c2");
             var myChart = echarts.init(document.getElementById('chart'));
             let xData = [], data1 = [], data2 = [], data3 = [];
             datas.forEach(item=>{
@@ -35,41 +35,44 @@
                 data2.push(item[2]);
                 data3.push(item[3]);
             });
+            let colorPurple = "#D945E6";
             var option = {
                 title: {
                     text: ''
                 },
                 tooltip: {},
-                legend: {
-                    top: -3,
-                    data: [
-                        {
-                            name: "低压",
-                            textStyle: {
-                                color: "#38e638"
-                            }
-                        },
-                        {
-                            name: "高压",
-                            textStyle: {
-                                color: "#38e638"
-                            }
-                        },
-                        {
-                            name: "心跳次数/分钟",
-                            textStyle: {
-                                color: "#f353a5"
-                            }
-                        },
-                    ]
-                },
+                // legend: {
+                //     top: -3,
+                //     data: [
+                //         {
+                //             name: "低压",
+                //             textStyle: {
+                //                 color: "#38e638"
+                //             }
+                //         },
+                //         {
+                //             name: "高压",
+                //             textStyle: {
+                //                 color: "#38e638"
+                //             }
+                //         },
+                //         {
+                //             name: "心跳次数/分钟",
+                //             textStyle: {
+                //                 color: colorPurple
+                //             }
+                //         },
+                //     ]
+                // },
                 xAxis: {
                     // name: "时间",
                     data: xData,
                     axisLabel: {
-                        color: "#38e638"
+                        color: "#38e638",
+                        show: false,
                     },
                     axisLine:{
+                        show: false,
                         lineStyle: {
                             color: "#38e638"
                         }
@@ -79,9 +82,10 @@
                     {
                         name: "血压",
                         min: 50,
-                        max: 140,
+                        max: 120,
                         axisLabel: {
-                            color: "#38e638"
+                            color: "#38e638",
+                            show: false,
                         },
                         nameTextStyle: {
                             color: "#38e638"
@@ -90,6 +94,9 @@
                             lineStyle: {
                                 color: "#38e638"
                             }
+                        },
+                        splitLine:{
+                            show: false
                         }
                     },
                     {
@@ -97,15 +104,19 @@
                         min: 60,
                         max: 100,
                         axisLabel: {
-                            color: "#f353a5"
+                            color: colorPurple,
+                            show: false,
                         },
                         nameTextStyle: {
-                            color: "#f353a5"
+                            color: colorPurple
                         },
                         axisLine:{
                             lineStyle: {
-                                color: "#f353a5"
+                                color: colorPurple
                             }
+                        },
+                        splitLine:{
+                            show: false
                         }
                     }
                 ],
@@ -134,10 +145,10 @@
                         data: data3,
                         yAxisIndex: 1,
                         lineStyle:{
-                            color: "#f353a5"
+                            color: colorPurple
                         },
                         itemStyle: {
-                            color: "#f353a5"
+                            color: colorPurple
                         }
                     },
                 ],
